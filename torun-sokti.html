@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarun Shakti Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+            color: #333; 
+            line-height: 1.6; 
+        }
+        header { 
+            background: linear-gradient(135deg, #2c3e50, #3498db); 
+            color: white; 
+            padding: 3rem 2rem; 
+            text-align: center; 
+            position: relative; 
+        }
+        header img { 
+            max-width: 180px; 
+            margin-bottom: 1.5rem; 
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); 
+        }
+        header h1 { 
+            margin: 0.5rem 0; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+        }
+        header p { 
+            margin: 0.5rem 0; 
+            font-size: 1.2rem; 
+            font-weight: 300; 
+            opacity: 0.9; 
+        }
+        .slogan { 
+            font-style: italic; 
+            font-weight: 500; 
+            margin-top: 1rem; 
+            font-size: 1.1rem; 
+        }
+        section { 
+            padding: 4rem 2rem; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        #banner { 
+            padding: 0; 
+            margin-bottom: 2rem; 
+        }
+        #banner img { 
+            width: 100%; 
+            height: 400px; 
+            object-fit: cover; 
+            border-radius: 0; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2); 
+        }
+        h2 { 
+            color: #2c3e50; 
+            margin-bottom: 2rem; 
+            font-weight: 600; 
+            text-align: center; 
+            position: relative; 
+        }
+        h2::after { 
+            content: ''; 
+            display: block; 
+            width: 60px; 
+            height: 3px; 
+            background: #3498db; 
+            margin: 0.5rem auto; 
+        }
+        .content-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 2rem; 
+        }
+        .content-card { 
+            background: white; 
+            border-radius: 16px; 
+            padding: 2rem; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            border: 1px solid #e1e8ed; 
+        }
+        .content-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+        }
+        .content-card h3 { 
+            color: #3498db; 
+            margin-bottom: 1rem; 
+            font-weight: 600; 
+        }
+        .team { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; 
+        }
+        .team-member { 
+            background: white; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            padding: 2rem; 
+            text-align: center; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            border: 1px solid #e1e8ed; 
+        }
+        .team-member:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+        }
+        .team-member img { 
+            width: 140px; 
+            height: 140px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 1.5rem; 
+            border: 5px solid #3498db; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+        }
+        .team-member h3 { 
+            margin: 0.5rem 0; 
+            color: #2c3e50; 
+            font-weight: 600; 
+        }
+        .team-member p { 
+            margin: 0.25rem 0; 
+            color: #7f8c8d; 
+            font-weight: 400; 
+        }
+        .donate-section { 
+            display: block; 
+            width: min(100%, 960px); 
+            margin: 4rem auto; 
+            background: linear-gradient(135deg, #27ae60, #2ecc71); 
+            color: white; 
+            text-align: center; 
+            padding: 4rem 2rem; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3); 
+        }
+        .donate-section h2 { 
+            color: white; 
+            margin-bottom: 1rem; 
+        }
+        .donate-section p { 
+            font-size: 1.2rem; 
+            margin-bottom: 2rem; 
+            opacity: 0.9; 
+        }
+        .donate-btn { 
+            background: white; 
+            color: #27ae60; 
+            border: none; 
+            padding: 1rem 2rem; 
+            border-radius: 50px; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            text-decoration: none; 
+            display: inline-block; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+        }
+        .donate-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
+        }
+        footer { 
+            background: #2c3e50; 
+            color: white; 
+            text-align: center; 
+            padding: 2rem; 
+            margin-top: 4rem; 
+        }
+        form { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 3rem; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-weight: 500; 
+            color: #2c3e50; 
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 1rem; 
+            margin-bottom: 1.5rem; 
+            border: 2px solid #e1e8ed; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+            transition: border-color 0.3s; 
+        }
+        input:focus, textarea:focus { 
+            outline: none; 
+            border-color: #3498db; 
+        }
+        input[type="submit"] { 
+            background: linear-gradient(135deg, #3498db, #2980b9); 
+            color: white; 
+            border: none; 
+            padding: 1rem 2rem; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            transition: all 0.3s; 
+        }
+        input[type="submit"]:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4); 
+        }
+        @media (max-width: 768px) { 
+            header { padding: 2rem 1rem; } 
+            header h1 { font-size: 2rem; } 
+            section { padding: 2rem 1rem; } 
+            .content-grid, .team { grid-template-columns: 1fr; } 
+        }
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.5); 
+            animation: fadeIn 0.3s; 
+        }
+        @keyframes fadeIn { 
+            from { opacity: 0; } 
+            to { opacity: 1; } 
+        }
+        .modal-content { 
+            background-color: white; 
+            margin: 5% auto; 
+            padding: 2rem; 
+            border-radius: 16px; 
+            width: 90%; 
+            max-width: 600px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
+            animation: slideDown 0.3s; 
+        }
+        @keyframes slideDown { 
+            from { transform: translateY(-50px); opacity: 0; } 
+            to { transform: translateY(0); opacity: 1; } 
+        }
+        .close-btn { 
+            color: #7f8c8d; 
+            float: right; 
+            font-size: 28px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: color 0.3s; 
+        }
+        .close-btn:hover { 
+            color: #2c3e50; 
+        }
+        .payment-options { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 2rem; 
+            margin-top: 2rem; 
+        }
+        .payment-option { 
+            text-align: center; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            padding: 1.5rem; 
+            border-radius: 12px; 
+            border: 2px solid #e1e8ed; 
+        }
+        .payment-option:hover { 
+            border-color: #3498db; 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.2); 
+        }
+        .payment-option img { 
+            width: 100%; 
+            max-width: 150px; 
+            height: auto; 
+            margin-bottom: 1rem; 
+        }
+        .payment-option h3 { 
+            color: #2c3e50; 
+            margin: 1rem 0; 
+        }
+        .payment-details { 
+            text-align: center; 
+            margin-top: 2rem; 
+        }
+        .phone-number { 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: #27ae60; 
+            margin: 1.5rem 0; 
+            letter-spacing: 2px; 
+        }
+        .send-money-btn { 
+            background: linear-gradient(135deg, #3498db, #2980b9); 
+            color: white; 
+            border: none; 
+            padding: 1rem 2rem; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1rem; 
+            font-weight: 600; 
+            margin-top: 1.5rem; 
+            transition: all 0.3s; 
+        }
+        .send-money-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4); 
+        }
+        .thank-you-message { 
+            text-align: center; 
+            padding: 2rem; 
+            background: linear-gradient(135deg, #27ae60, #2ecc71); 
+            color: white; 
+            border-radius: 12px; 
+            margin-top: 1.5rem; 
+        }
+        .thank-you-message h3 { 
+            color: white; 
+            font-size: 1.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .thank-you-message p { 
+            font-size: 1.05rem; 
+            line-height: 1.8; 
+            margin: 0.5rem 0; 
+        }
+    </style>
+<body>
+    <header>
+        <img src="logo.png" alt="Tarun Shakti Foundation Logo">
+        <h1>Tarun Shakti Foundation</h1>
+        <p>Empowering Youth for a Better Tomorrow</p>
+        <p class="slogan">"For the sake of the Ummah, with the Sunnah"</p>
+    </header>
+    <section id="banner">
+        <img src="bannr.jpg" alt="Tarun Shakti Foundation Banner" style="width: 100%; max-height: 300px; object-fit: cover;">
+    </section>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Tarun Shakti Foundation, established in 2026, is a humanitarian, non-political organization dedicated to empowering young individuals through education, skill development, and community service. Guided by the principle "For the sake of the Ummah, with the Sunnah," we strive to build a compassionate society rooted in Islamic values and sustainable development.</p>
+    </section>
+    <section id="programs">
+        <h2>Our Programs</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>Educational Workshops</h3>
+                <p>Interactive sessions focusing on Islamic knowledge, modern skills, and personal development to nurture well-rounded individuals.</p>
+            </div>
+            <div class="content-card">
+                <h3>Skill Training Sessions</h3>
+                <p>Practical training in various trades and technologies, empowering youth with marketable skills for sustainable livelihoods.</p>
+            </div>
+            <div class="content-card">
+                <h3>Community Outreach</h3>
+                <p>Grassroots initiatives including charity drives, health awareness campaigns, and support for underprivileged communities.</p>
+            </div>
+        </div>
+    </section>
+    <section id="achievements">
+        <h2>What We've Accomplished</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>500+ Lives Impacted</h3>
+                <p>Through our educational programs, we've reached over 500 young individuals, providing them with knowledge and skills for a brighter future.</p>
+            </div>
+            <div class="content-card">
+                <h3>Community Projects</h3>
+                <p>Successfully organized multiple charity drives and community service events, fostering unity and compassion within our Ummah.</p>
+            </div>
+            <div class="content-card">
+                <h3>Youth Empowerment</h3>
+                <p>Trained dozens of young leaders who are now actively contributing to their communities and spreading positive change.</p>
+            </div>
+        </div>
+    </section>
+    <section id="plans">
+        <h2>Our Future Plans</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>Expanded Educational Reach</h3>
+                <p>Launch online platforms and mobile units to bring quality Islamic education to remote areas and underserved communities.</p>
+            </div>
+            <div class="content-card">
+                <h3>Sustainable Development Initiatives</h3>
+                <p>Partner with local businesses to create vocational training centers and micro-finance programs for economic empowerment.</p>
+            </div>
+            <div class="content-card">
+                <h3>Global Humanitarian Network</h3>
+                <p>Build international partnerships to address global challenges while staying true to our Islamic principles and values.</p>
+            </div>
+        </div>
+    </section>
+    <section id="team">
+        <h2>Our Leadership Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="sovapoty.png" alt="Md. Kawsar Ahmed">
+                <h3>Md. Kawsar Ahmed</h3>
+                <p>President</p>
+                <p>Engineer</p>
+            </div>
+            <div class="team-member">
+                <img src="soho-sovapoty.png" alt="Vice-President">
+                <h3>Md. Ibrahim Khalil</h3>
+                <p>Vice-President</p>
+                <p>Engineer & Student</p>
+            </div>
+            <div class="team-member">
+                <img src="sompadok.png" alt="Md. Mehedi Hasan Abir">
+                <h3>Md. Mahadi Hasan Abir</h3>
+                <p>General Secretary</p>
+                <p>Student</p>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: tarunshaktifoundation@gmail.com</p>
+        <p>Phone: +8801609221481</p>
+    </section>
+    <section class="donate-section">
+        <h2>Support Our Mission</h2>
+        <p>Your generous donations help us continue our work of empowering youth and serving our Ummah. Every contribution, no matter the size, makes a difference in building a compassionate and educated community.</p>
+        <button class="donate-btn" onclick="openDonateModal()">Donate Now</button>
+    </section>
+    <section id="feedback">
+        <h2>Feedback</h2>
+        <p>We value your feedback! Please share your thoughts with us.</p>
+        <form action="#" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <input type="submit" value="Submit Feedback">
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2026 Tarun Shakti Foundation. All rights reserved.</p>
+        <p>Dev: ABIR</p>
+    </footer>
+
+    <div id="donateModal" class="modal" >
+        <div class="modal-content" >
+            <span class="close-btn" onclick="closeDonateModal()">&times;</span>
+            <h2 style="text-align: center; color: #2c3e50;">Choose Payment Method</h2>
+            <div id="paymentOptions" class="payment-options">
+                <div class="payment-option" onclick="selectPayment('bkash')">
+                    <img src="bkash.png" alt="Bikash">
+                    <h3>Bkash</h3>
+                </div>
+                <div class="payment-option" onclick="selectPayment('nagad')">
+                    <img src="nagad.png" alt="Nagad">
+                    <h3>Nagad</h3>
+                </div>
+                <div class="payment-option" onclick="selectPayment('nagad')">
+                    <img src="roket.png" alt="Nagad">
+                    <h3>Roket</h3>
+                </div>
+                <div class="payment-option" onclick="selectPayment('nagad')">
+                    <img src="upay.png" alt="Nagad">
+                    <h3>Upay</h3>
+                </div>
+            </div>
+            <div id="paymentDetails" style="display: none;">
+                <p style="font-size: 1.1rem; color: #2c3e50; font-weight: 600;">Send money to this number:</p>
+                <div class="phone-number">01609221481</div>
+                <button class="send-money-btn" onclick="showThankYou()">Send Money</button>
+            </div>
+            <div id="thankYouSection" style="display: none;">
+                <div class="thank-you-message">
+                    <h3>🙏 Thank You!</h3>
+                    <p>Thank you for standing behind us and the people.</p>
+                    <p>May your donation be correct.</p>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="send-money-btn" onclick="closeDonateModal()" style="background: #2c3e50;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openDonateModal() {
+            document.getElementById("donateModal").style.display = "block";
+            document.getElementById("paymentOptions").style.display = "grid";
+            document.getElementById("paymentDetails").style.display = "none";
+            document.getElementById("thankYouSection").style.display = "none";
+        }
+
+        function closeDonateModal() {
+            document.getElementById("donateModal").style.display = "none";
+        }
+
+        function selectPayment(method) {
+            document.getElementById("paymentOptions").style.display = "none";
+            document.getElementById("paymentDetails").style.display = "block";
+        }
+
+        function showThankYou() {
+            document.getElementById("paymentDetails").style.display = "none";
+            document.getElementById("thankYouSection").style.display = "block";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("donateModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
