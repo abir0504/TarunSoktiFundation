@@ -343,6 +343,77 @@
             line-height: 1.8; 
             margin: 0.5rem 0; 
         }
+        .footer-content { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+            align-items: center; 
+            gap: 1rem; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .footer-text { 
+            text-align: left; 
+            max-width: 640px; 
+        }
+        .footer-text p { 
+            margin: 0.35rem 0; 
+            opacity: 0.92; 
+        }
+        .dev-signature { 
+            margin-top: 0.75rem; 
+            color: #b8d3f5; 
+            font-size: 0.95rem; 
+        }
+        .dev-contact { 
+            text-align: right; 
+            min-width: 220px; 
+        }
+        .dev-contact p { 
+            margin: 0 0 0.75rem 0; 
+            font-weight: 600; 
+            letter-spacing: 0.02em; 
+        }
+        .social-links { 
+            display: flex; 
+            justify-content: flex-end; 
+            flex-wrap: wrap; 
+            gap: 0.75rem; 
+        }
+        .social-link { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            padding: 0.85rem 1rem; 
+            border-radius: 999px; 
+            border: 1px solid rgba(255,255,255,0.22); 
+            color: white; 
+            background: rgba(255,255,255,0.08); 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+        }
+        .social-link:hover { 
+            transform: translateY(-2px); 
+            background: rgba(255,255,255,0.18); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+        }
+        .social-link.facebook::before { content: "📘"; }
+        .social-link.instagram::before { content: "📸"; }
+        .social-link.whatsapp::before { content: "💬"; }
+        @media (max-width: 768px) { 
+            .footer-content { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            .footer-text, .dev-contact { 
+                text-align: center; 
+                min-width: auto; 
+            }
+            .social-links { 
+                justify-content: center; 
+            }
+        }
     </style>
 <body>
     <header>
@@ -453,8 +524,21 @@
         </form>
     </section>
     <footer>
-        <p>&copy; 2026 Tarun Shakti Foundation. All rights reserved.</p>
-        <p>Dev: ABIR</p>
+        <div class="footer-content">
+            <div class="footer-text">
+                <p>&copy; 2026 Tarun Shakti Foundation. All rights reserved.</p>
+                <p>Designed & Developed by <strong>Abir</strong></p>
+                <p class="dev-signature">A premium web experience by Abir — crafting every pixel with care and excellence.</p>
+            </div>
+            <div class="dev-contact">
+                <p>Connect with Abir</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1CPZC1ei2Z/" class="social-link facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://www.instagram.com/mahadi.abir99?igsh=MWpzYzNrcWh2Ymg1OA==" class="social-link instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://wa.me/8801313901119" class="social-link whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <div id="donateModal" class="modal" >
