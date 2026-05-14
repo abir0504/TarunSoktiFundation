@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarun Shakti Foundation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         body { 
@@ -14,6 +14,9 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
             color: #333; 
             line-height: 1.6; 
+        }
+        html[lang="bn"] body {
+            font-family: 'Noto Sans Bengali', 'Poppins', sans-serif;
         }
         header { 
             background: linear-gradient(135deg, #2c3e50, #3498db); 
@@ -116,6 +119,105 @@
         .team-member:hover { 
             transform: translateY(-5px); 
             box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+        }
+        .committee-section { 
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(46, 204, 113, 0.05) 100%); 
+            border-top: 2px solid rgba(52, 152, 219, 0.2); 
+            border-bottom: 2px solid rgba(52, 152, 219, 0.2); 
+            padding: 4rem 2rem; 
+            margin-top: 3rem; 
+        }
+        .committee-subtitle { 
+            text-align: center; 
+            color: #7f8c8d; 
+            font-size: 1.05rem; 
+            font-weight: 400; 
+            margin-top: -1.5rem; 
+            margin-bottom: 3rem; 
+            font-style: italic; 
+        }
+        .committee-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 1.8rem; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .committee-member { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 1.5rem; 
+            text-align: center; 
+            border: 1px solid #e8f0f7; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .committee-member::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            height: 3px; 
+            background: linear-gradient(90deg, #3498db, #2ecc71, #3498db); 
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+        }
+        .committee-member:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.12); 
+            border-color: #3498db; 
+        }
+        .committee-member:hover::before { 
+            opacity: 1; 
+        }
+        .committee-member img { 
+            width: 110px; 
+            height: 110px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 1rem; 
+            border: 3px solid #e8f0f7; 
+            transition: all 0.3s ease; 
+        }
+        .committee-member:hover img { 
+            border-color: #3498db; 
+        }
+        .committee-member h4 { 
+            margin: 0.75rem 0 0.25rem; 
+            color: #2c3e50; 
+            font-weight: 600; 
+            font-size: 1rem; 
+        }
+        .committee-position { 
+            color: #3498db; 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            margin: 0.3rem 0; 
+        }
+        .committee-role { 
+            color: #7f8c8d; 
+            font-size: 0.85rem; 
+            font-weight: 400; 
+            margin: 0.2rem 0 0; 
+            line-height: 1.4; 
+        }
+        @media (max-width: 768px) { 
+            .committee-section { 
+                padding: 2.5rem 1rem; 
+            }
+            .committee-subtitle { 
+                font-size: 0.95rem; 
+            }
+            .committee-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 1.2rem; 
+            }
+            .committee-member { 
+                padding: 1.2rem; 
+            }
         }
         .team-member img { 
             width: 140px; 
@@ -401,7 +503,67 @@
         .social-link.facebook::before { content: "📘"; }
         .social-link.instagram::before { content: "📸"; }
         .social-link.whatsapp::before { content: "💬"; }
+        .language-selector { 
+            position: fixed; 
+            top: 25px; 
+            right: 25px; 
+            z-index: 2000; 
+            display: flex; 
+            gap: 0.75rem; 
+            background: rgba(255, 255, 255, 0.92); 
+            backdrop-filter: blur(12px); 
+            padding: 0.6rem; 
+            border-radius: 60px; 
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.5) inset; 
+            border: 1px solid rgba(52, 152, 219, 0.15); 
+        }
+        .lang-btn { 
+            background: transparent; 
+            border: none; 
+            color: #2c3e50; 
+            padding: 0.65rem 1.3rem; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            font-size: 0.95rem; 
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative; 
+            letter-spacing: 0.3px; 
+        }
+        .lang-btn::before { 
+            content: ''; 
+            position: absolute; 
+            inset: 0; 
+            border-radius: 50px; 
+            background: transparent; 
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: -1; 
+        }
+        .lang-btn:hover { 
+            transform: translateY(-1px); 
+            color: #3498db; 
+        }
+        .lang-btn.active { 
+            color: white; 
+        }
+        .lang-btn.active::before { 
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); 
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.25); 
+        }
+        .lang-btn.active:hover { 
+            transform: translateY(-2px); 
+        }
         @media (max-width: 768px) { 
+            .language-selector { 
+                top: 15px; 
+                right: 15px; 
+                gap: 0.4rem; 
+                padding: 0.5rem; 
+            }
+            .lang-btn { 
+                padding: 0.55rem 1rem; 
+                font-size: 0.85rem; 
+            }
             .footer-content { 
                 flex-direction: column; 
                 text-align: center; 
@@ -416,6 +578,10 @@
         }
     </style>
 <body>
+    <div class="language-selector">
+        <button class="lang-btn active" id="langEnglish" onclick="setLanguage('en')"><span style="font-size: 0.75rem; opacity: 0.7;">EN</span> English</button>
+        <button class="lang-btn" id="langBangla" onclick="setLanguage('bn')"><span style="font-size: 0.75rem; opacity: 0.7;">BN</span> বাংলা</button>
+    </div>
     <header>
         <img src="logo.png" alt="Tarun Shakti Foundation Logo">
         <h1>Tarun Shakti Foundation</h1>
@@ -500,6 +666,42 @@
             </div>
         </div>
     </section>
+    <section class="committee-section">
+        <h2 style="margin-top: 0;">Committee Members</h2>
+        <p class="committee-subtitle">Our dedicated committee working to strengthen the foundation</p>
+        <div class="committee-grid">
+            <div class="committee-member">
+                <img src="Advisor-and-Social-Service-Editor.png" alt="Md. Shafiqul Islam">
+                <h4>Md. Shafiqul Islam</h4>
+                <p class="committee-position">Advisor & Social Service Editor</p>
+                <p class="committee-role">Prominent Businessman</p>
+            </div>
+            <div class="committee-member">
+                <img src="Treasurer.png" alt="Shahriar Arnab Redwan">
+                <h4>Shahriar Arnab Redwan</h4>
+                <p class="committee-position">Treasurer</p>
+                <p class="committee-role">Student</p>
+            </div>
+            <div class="committee-member">
+                <img src="Religion-Editor.png" alt="Md. Abdullah">
+                <h4>Md. Abdullah</h4>
+                <p class="committee-position">Religious Affairs Editor</p>
+                <p class="committee-role">Maulana</p>
+            </div>
+            <div class="committee-member">
+                <img src="Type-Publication-Subject-Editor.png" alt="Md. Nahid">
+                <h4>Md. Nahid</h4>
+                <p class="committee-position">Publication & Publicity Editor</p>
+                <p class="committee-role">Student</p>
+            </div>
+            <div class="committee-member">
+                <img src="Sports-editor.png" alt="Delwar Hossain">
+                <h4>Delwar Hossain</h4>
+                <p class="committee-position">Activities & Sports Editor</p>
+                <p class="committee-role">Departmental Sports Worker</p>
+            </div>
+        </div>
+    </section>
     <section id="contact">
         <h2>Contact Us</h2>
         <p>Email: tarunshaktifoundation@gmail.com</p>
@@ -564,9 +766,9 @@
                 </div>
             </div>
             <div id="paymentDetails" style="display: none;">
-                <p style="font-size: 1.1rem; color: #2c3e50; font-weight: 600;">Send money to this number:</p>
+                <p style="font-size: 1.1rem; color: #2c3e50; font-weight: 600;" id="paymentSendText">Send money to this number:</p>
                 <div class="phone-number">01609221481</div>
-                <button class="send-money-btn" onclick="showThankYou()">Send Money</button>
+                <button class="send-money-btn" id="sendMoneyBtn" onclick="showThankYou()">Send Money</button>
             </div>
             <div id="thankYouSection" style="display: none;">
                 <div class="thank-you-message">
@@ -582,6 +784,374 @@
     </div>
 
     <script>
+        // Translation Object
+        const translations = {
+            en: {
+                logo_alt: "Tarun Shakti Foundation Logo",
+                header_title: "Tarun Shakti Foundation",
+                header_subtitle: "Empowering Youth for a Better Tomorrow",
+                header_slogan: '"For the sake of the Ummah, with the Sunnah"',
+                
+                about_title: "About Us",
+                about_text: "Tarun Shakti Foundation, established in 2026, is a humanitarian, non-political organization dedicated to empowering young individuals through education, skill development, and community service. Guided by the principle \"For the sake of the Ummah, with the Sunnah,\" we strive to build a compassionate society rooted in Islamic values and sustainable development.",
+                
+                programs_title: "Our Programs",
+                program1_title: "Educational Workshops",
+                program1_text: "Interactive sessions focusing on Islamic knowledge, modern skills, and personal development to nurture well-rounded individuals.",
+                program2_title: "Skill Training Sessions",
+                program2_text: "Practical training in various trades and technologies, empowering youth with marketable skills for sustainable livelihoods.",
+                program3_title: "Community Outreach",
+                program3_text: "Grassroots initiatives including charity drives, health awareness campaigns, and support for underprivileged communities.",
+                
+                achievements_title: "What We've Accomplished",
+                achievement1_title: "500+ Lives Impacted",
+                achievement1_text: "Through our educational programs, we've reached over 500 young individuals, providing them with knowledge and skills for a brighter future.",
+                achievement2_title: "Community Projects",
+                achievement2_text: "Successfully organized multiple charity drives and community service events, fostering unity and compassion within our Ummah.",
+                achievement3_title: "Youth Empowerment",
+                achievement3_text: "Trained dozens of young leaders who are now actively contributing to their communities and spreading positive change.",
+                
+                plans_title: "Our Future Plans",
+                plan1_title: "Expanded Educational Reach",
+                plan1_text: "Launch online platforms and mobile units to bring quality Islamic education to remote areas and underserved communities.",
+                plan2_title: "Sustainable Development Initiatives",
+                plan2_text: "Partner with local businesses to create vocational training centers and micro-finance programs for economic empowerment.",
+                plan3_title: "Global Humanitarian Network",
+                plan3_text: "Build international partnerships to address global challenges while staying true to our Islamic principles and values.",
+                
+                team_title: "Our Leadership Team",
+                team1_name: "Md. Kawsar Ahmed",
+                team1_position: "President",
+                team1_role: "Engineer",
+                team2_name: "Md. Ibrahim Khalil",
+                team2_position: "Vice-President",
+                team2_role: "Engineer & Student",
+                team3_name: "Md. Mahadi Hasan Abir",
+                team3_position: "General Secretary",
+                team3_role: "Student",
+                
+                committee_title: "Committee Members",
+                committee_subtitle: "Our dedicated committee working to strengthen the foundation",
+                
+                committee1_name: "Md. Shafiqul Islam",
+                committee1_position: "Advisor & Social Service Editor",
+                committee1_role: "Prominent Businessman",
+                
+                committee2_name: "Shahriar Arnab Redwan",
+                committee2_position: "Treasurer",
+                committee2_role: "Student",
+                
+                committee3_name: "Md. Abdullah",
+                committee3_position: "Religious Affairs Editor",
+                committee3_role: "Maulana",
+                
+                committee4_name: "Md. Nahid",
+                committee4_position: "Publication & Publicity Editor",
+                committee4_role: "Student",
+                
+                committee5_name: "Delwar Hossain",
+                committee5_position: "Activities & Sports Editor",
+                committee5_role: "Departmental Sports Worker",
+                
+                contact_title: "Contact Us",
+                contact_email: "Email: tarunshaktifoundation@gmail.com",
+                contact_phone: "Phone: +8801609221481",
+                
+                donate_title: "Support Our Mission",
+                donate_text: "Your generous donations help us continue our work of empowering youth and serving our Ummah. Every contribution, no matter the size, makes a difference in building a compassionate and educated community.",
+                donate_btn: "Donate Now",
+                
+                feedback_title: "Feedback",
+                feedback_text: "We value your feedback! Please share your thoughts with us.",
+                feedback_name: "Name:",
+                feedback_email: "Email:",
+                feedback_message: "Message:",
+                feedback_submit: "Submit Feedback",
+                
+                payment_method: "Choose Payment Method",
+                payment_send: "Send money to this number:",
+                payment_btn: "Send Money",
+                payment_phone: "01609221481",
+                
+                thank_you_title: "🙏 Thank You!",
+                thank_you_msg1: "Thank you for standing behind us and the people.",
+                thank_you_msg2: "May your donation be correct.",
+                thank_you_close: "Close",
+                
+                footer_copyright: "© 2026 Tarun Shakti Foundation. All rights reserved.",
+                footer_designed: "Designed & Developed by Abir",
+                footer_signature: "A premium web experience by Abir — crafting every pixel with care and excellence.",
+                footer_connect: "Connect with Abir"
+            },
+            bn: {
+                logo_alt: "তারুণ শক্তি ফাউন্ডেশন লোগো",
+                header_title: "তারুণ শক্তি ফাউন্ডেশন",
+                header_subtitle: "আগামীর জন্য যুবকদের ক্ষমতায়ন",
+                header_slogan: '"উম্মতের জন্য, সুন্নাহর সাথে"',
+                
+                about_title: "আমাদের সম্পর্কে",
+                about_text: "তারুণ শক্তি ফাউন্ডেশন, ২০২৬ সালে প্রতিষ্ঠিত, একটি মানবিক, অ-রাজনৈতিক সংস্থা যা শিক্ষা, দক্ষতা উন্নয়ন এবং সম্প্রদায় সেবার মাধ্যমে তরুণদের ক্ষমতায়নে নিবেদিত। \"উম্মতের জন্য, সুন্নাহর সাথে\" নীতি দ্বারা পরিচালিত, আমরা ইসলামিক মূল্যবোধ এবং টেকসই উন্নয়নের ভিত্তিতে একটি সহানুভূতিশীল সমাজ গড়তে প্রতিশ্রুতিবদ্ধ।",
+                
+                programs_title: "আমাদের প্রোগ্রাম",
+                program1_title: "শিক্ষামূলক কর্মশালা",
+                program1_text: "ইসলামিক জ্ঞান, আধুনিক দক্ষতা এবং ব্যক্তিগত উন্নয়নের উপর ফোকাস করা ইন্টারেক্টিভ সেশন যা সুসংগত ব্যক্তিদের লালন করে।",
+                program2_title: "দক্ষতা প্রশিক্ষণ সেশন",
+                program2_text: "বিভিন্ন ট্রেড এবং প্রযুক্তিতে ব্যবহারিক প্রশিক্ষণ, যুবকদের টেকসই জীবিকার জন্য বিপণনযোগ্য দক্ষতা সহ ক্ষমতায়িত করা।",
+                program3_title: "সম্প্রদায় আউটরিচ",
+                program3_text: "তৃণমূল উদ্যোগ যার মধ্যে রয়েছে দাতব্য অভিযান, স্বাস্থ্য সচেতনতা প্রচারাভিযান এবং সুবিধাবঞ্চিত সম্প্রদায়ের জন্য সহায়তা।",
+                
+                achievements_title: "আমরা যা অর্জন করেছি",
+                achievement1_title: "৫০০+ জীবন প্রভাবিত",
+                achievement1_text: "আমাদের শিক্ষামূলক প্রোগ্রামের মাধ্যমে, আমরা ৫০০ এরও বেশি তরুণকে পৌঁছে দিয়েছি, তাদের একটি উজ্জ্বল ভবিষ্যতের জন্য জ্ঞান এবং দক্ষতা প্রদান করেছি।",
+                achievement2_title: "সম্প্রদায় প্রকল্প",
+                achievement2_text: "একাধিক দাতব্য অভিযান এবং সম্প্রদায় সেবা ইভেন্ট সফলভাবে আয়োজন করেছি, আমাদের উম্মতের মধ্যে ঐক্য এবং সহানুভূতি লালন করেছি।",
+                achievement3_title: "যুব ক্ষমতায়ন",
+                achievement3_text: "দর্জনাধিক তরুণ নেতাদের প্রশিক্ষণ দিয়েছি যারা এখন তাদের সম্প্রদায়ে সক্রিয়ভাবে অবদান রাখছেন এবং ইতিবাচক পরিবর্তন ছড়িয়ে দিচ্ছেন।",
+                
+                plans_title: "আমাদের ভবিষ্যত পরিকল্পনা",
+                plan1_title: "সম্প্রসারিত শিক্ষা পৌঁছানো",
+                plan1_text: "অনলাইন প্ল্যাটফর্ম এবং মোবাইল ইউনিট চালু করা যাতে দূরবর্তী এলাকা এবং সুবিধাবঞ্চিত সম্প্রদায়কে মানসম্পন্ন ইসলামিক শিক্ষা পৌঁছানো যায়।",
+                plan2_title: "টেকসই উন্নয়ন উদ্যোগ",
+                plan2_text: "স্থানীয় ব্যবসার সাথে অংশীদারিত্ব করে পেশাদার প্রশিক্ষণ কেন্দ্র এবং সামষ্টিক অর্থায়ন প্রোগ্রাম তৈরি করা অর্থনৈতিক ক্ষমতায়নের জন্য।",
+                plan3_title: "বৈশ্বিক মানবিক নেটওয়ার্ক",
+                plan3_text: "আন্তর্জাতিক অংশীদারিত্ব তৈরি করা বৈশ্বিক চ্যালেঞ্জ মোকাবেলা করতে আমাদের ইসলামিক নীতি এবং মূল্যবোধের প্রতি সত্য থেকে।",
+                
+                team_title: "আমাদের নেতৃত্ব দল",
+                team1_name: "মোহাম্মদ কাওসার আহমেদ",
+                team1_position: "সভাপতি",
+                team1_role: "প্রকৌশলী",
+                team2_name: "মোহাম্মদ ইব্রাহিম খলিল",
+                team2_position: "উপ-সভাপতি",
+                team2_role: "প্রকৌশলী এবং শিক্ষার্থী",
+                team3_name: "মোহাম্মদ মাহাদি হাসান আবীর",
+                team3_position: "সাধারণ সম্পাদক",
+                team3_role: "শিক্ষার্থী",
+                
+                committee_title: "কমিটি সদস্য",
+                committee_subtitle: "আমাদের ফাউন্ডেশনকে শক্তিশালী করতে নিবেদিত কমিটি",
+                
+                committee1_name: "মোহাম্মদ শফিকুল ইসলাম",
+                committee1_position: "উপদেষ্টা এবং সামাজিক সেবা সম্পাদক",
+                committee1_role: "প্রতিষ্ঠিত ব্যবসায়ী",
+                
+                committee2_name: "শাহরিয়ার আর্নব রেদওয়ান",
+                committee2_position: "কোষাধ্যক্ষ",
+                committee2_role: "শিক্ষার্থী",
+                
+                committee3_name: "মোহাম্মদ আবদুল্লাহ",
+                committee3_position: "ধর্মীয় বিষয়ক সম্পাদক",
+                committee3_role: "মৌলানা",
+                
+                committee4_name: "মোহাম্মদ নাহিদ",
+                committee4_position: "প্রকাশনা এবং প্রচার সম্পাদক",
+                committee4_role: "শিক্ষার্থী",
+                
+                committee5_name: "ডেলোয়ার হোসেন",
+                committee5_position: "কার্যক্রম এবং ক্রীড়া সম্পাদক",
+                committee5_role: "বিভাগীয় ক্রীড়া কর্মী",
+                
+                contact_title: "আমাদের সাথে যোগাযোগ করুন",
+                contact_email: "ইমেইল: tarunshaktifoundation@gmail.com",
+                contact_phone: "ফোন: +8801609221481",
+                
+                donate_title: "আমাদের মিশন সমর্থন করুন",
+                donate_text: "আপনার উদার দান আমাদের যুবকদের ক্ষমতায়ন এবং আমাদের উম্মতের সেবা করার কাজ অব্যাহত রাখতে সাহায্য করে। প্রতিটি অবদান, যাই হোক না কেন, একটি সহানুভূতিশীল এবং শিক্ষিত সম্প্রদায় নির্মাণে পার্থক্য তৈরি করে।",
+                donate_btn: "এখনই দান করুন",
+                
+                feedback_title: "প্রতিক্রিয়া",
+                feedback_text: "আমরা আপনার প্রতিক্রিয়ার মূল্য দিই! আমাদের সাথে আপনার চিন্তা শেয়ার করুন।",
+                feedback_name: "নাম:",
+                feedback_email: "ইমেইল:",
+                feedback_message: "বার্তা:",
+                feedback_submit: "প্রতিক্রিয়া জমা দিন",
+                
+                payment_method: "পেমেন্ট পদ্ধতি নির্বাচন করুন",
+                payment_send: "এই নম্বরে অর্থ পাঠান:",
+                payment_btn: "অর্থ পাঠান",
+                payment_phone: "01609221481",
+                
+                thank_you_title: "🙏 ধন্যবাদ!",
+                thank_you_msg1: "আপনার আমাদের এবং মানুষের পিছনে দাঁড়ানোর জন্য ধন্যবাদ।",
+                thank_you_msg2: "আপনার দান সঠিক হোক।",
+                thank_you_close: "বন্ধ করুন",
+                
+                footer_copyright: "© ২০২৬ তারুণ শক্তি ফাউন্ডেশন। সর্বস্বত্ব সংরক্ষিত।",
+                footer_designed: "ডিজাইন ও উন্নয়ন করেছেন আবীর",
+                footer_signature: "আবীরের একটি প্রিমিয়াম ওয়েব অভিজ্ঞতা — যত্ন এবং উৎকর্ষতার সাথে প্রতিটি পিক্সেল তৈরি করা।",
+                footer_connect: "আবীরের সাথে সংযোগ করুন"
+            }
+        };
+
+        // Get current language from localStorage or default to English
+        let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+        // Initialize page with saved language
+        function initializeLanguage() {
+            setLanguage(currentLanguage);
+        }
+
+        // Set language function
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('preferredLanguage', lang);
+            updatePageLanguage();
+            updateLanguageButtons();
+        }
+
+        // Update all page content based on selected language
+        function updatePageLanguage() {
+            const trans = translations[currentLanguage];
+            
+            // Update header
+            document.querySelector('header img').alt = trans.logo_alt;
+            document.querySelector('header h1').textContent = trans.header_title;
+            document.querySelectorAll('header p')[0].textContent = trans.header_subtitle;
+            document.querySelector('.slogan').textContent = trans.header_slogan;
+            
+            // Update sections
+            document.querySelectorAll('h2')[0].textContent = trans.about_title;
+            document.querySelector('#about > p').textContent = trans.about_text;
+            
+            document.querySelectorAll('h2')[1].textContent = trans.programs_title;
+            let progCards = document.querySelectorAll('#programs .content-card');
+            progCards[0].querySelector('h3').textContent = trans.program1_title;
+            progCards[0].querySelector('p').textContent = trans.program1_text;
+            progCards[1].querySelector('h3').textContent = trans.program2_title;
+            progCards[1].querySelector('p').textContent = trans.program2_text;
+            progCards[2].querySelector('h3').textContent = trans.program3_title;
+            progCards[2].querySelector('p').textContent = trans.program3_text;
+            
+            document.querySelectorAll('h2')[2].textContent = trans.achievements_title;
+            let achCards = document.querySelectorAll('#achievements .content-card');
+            achCards[0].querySelector('h3').textContent = trans.achievement1_title;
+            achCards[0].querySelector('p').textContent = trans.achievement1_text;
+            achCards[1].querySelector('h3').textContent = trans.achievement2_title;
+            achCards[1].querySelector('p').textContent = trans.achievement2_text;
+            achCards[2].querySelector('h3').textContent = trans.achievement3_title;
+            achCards[2].querySelector('p').textContent = trans.achievement3_text;
+            
+            document.querySelectorAll('h2')[3].textContent = trans.plans_title;
+            let planCards = document.querySelectorAll('#plans .content-card');
+            planCards[0].querySelector('h3').textContent = trans.plan1_title;
+            planCards[0].querySelector('p').textContent = trans.plan1_text;
+            planCards[1].querySelector('h3').textContent = trans.plan2_title;
+            planCards[1].querySelector('p').textContent = trans.plan2_text;
+            planCards[2].querySelector('h3').textContent = trans.plan3_title;
+            planCards[2].querySelector('p').textContent = trans.plan3_text;
+            
+            document.querySelectorAll('h2')[4].textContent = trans.team_title;
+            let teamMembers = document.querySelectorAll('.team-member');
+            teamMembers[0].querySelector('h3').textContent = trans.team1_name;
+            teamMembers[0].querySelectorAll('p')[0].textContent = trans.team1_position;
+            teamMembers[0].querySelectorAll('p')[1].textContent = trans.team1_role;
+            teamMembers[1].querySelector('h3').textContent = trans.team2_name;
+            teamMembers[1].querySelectorAll('p')[0].textContent = trans.team2_position;
+            teamMembers[1].querySelectorAll('p')[1].textContent = trans.team2_role;
+            teamMembers[2].querySelector('h3').textContent = trans.team3_name;
+            teamMembers[2].querySelectorAll('p')[0].textContent = trans.team3_position;
+            teamMembers[2].querySelectorAll('p')[1].textContent = trans.team3_role;
+            
+            // Update committee members
+            let committeeTitle = document.querySelector('.committee-section h2');
+            if (committeeTitle) committeeTitle.textContent = trans.committee_title;
+            
+            let committeeSubtitle = document.querySelector('.committee-subtitle');
+            if (committeeSubtitle) committeeSubtitle.textContent = trans.committee_subtitle;
+            
+            let committeeMembers = document.querySelectorAll('.committee-member');
+            if (committeeMembers.length >= 5) {
+                // Committee member 1
+                committeeMembers[0].querySelector('h4').textContent = trans.committee1_name;
+                committeeMembers[0].querySelector('.committee-position').textContent = trans.committee1_position;
+                committeeMembers[0].querySelector('.committee-role').textContent = trans.committee1_role;
+                
+                // Committee member 2
+                committeeMembers[1].querySelector('h4').textContent = trans.committee2_name;
+                committeeMembers[1].querySelector('.committee-position').textContent = trans.committee2_position;
+                committeeMembers[1].querySelector('.committee-role').textContent = trans.committee2_role;
+                
+                // Committee member 3
+                committeeMembers[2].querySelector('h4').textContent = trans.committee3_name;
+                committeeMembers[2].querySelector('.committee-position').textContent = trans.committee3_position;
+                committeeMembers[2].querySelector('.committee-role').textContent = trans.committee3_role;
+                
+                // Committee member 4
+                committeeMembers[3].querySelector('h4').textContent = trans.committee4_name;
+                committeeMembers[3].querySelector('.committee-position').textContent = trans.committee4_position;
+                committeeMembers[3].querySelector('.committee-role').textContent = trans.committee4_role;
+                
+                // Committee member 5
+                committeeMembers[4].querySelector('h4').textContent = trans.committee5_name;
+                committeeMembers[4].querySelector('.committee-position').textContent = trans.committee5_position;
+                committeeMembers[4].querySelector('.committee-role').textContent = trans.committee5_role;
+            }
+            
+            document.querySelectorAll('h2')[6].textContent = trans.contact_title;
+            let contactPs = document.querySelectorAll('#contact > p');
+            contactPs[0].textContent = trans.contact_email;
+            contactPs[1].textContent = trans.contact_phone;
+            
+            let donateH2 = document.querySelector('.donate-section h2');
+            if (donateH2) donateH2.textContent = trans.donate_title;
+            
+            let donatePara = document.querySelector('.donate-section > p');
+            if (donatePara) donatePara.textContent = trans.donate_text;
+            
+            document.querySelector('.donate-btn').textContent = trans.donate_btn;
+            
+            let feedbackH2 = document.querySelector('#feedback h2');
+            if (feedbackH2) feedbackH2.textContent = trans.feedback_title;
+            let feedbackSection = document.querySelector('#feedback > p');
+            feedbackSection.textContent = trans.feedback_text;
+            let labels = document.querySelectorAll('label');
+            labels[0].textContent = trans.feedback_name;
+            labels[1].textContent = trans.feedback_email;
+            labels[2].textContent = trans.feedback_message;
+            document.querySelector('input[type="submit"]').value = trans.feedback_submit;
+            
+            // Update modal
+            document.querySelector('.modal-content h2').textContent = trans.payment_method;
+            let paymentSendText = document.getElementById('paymentSendText');
+            if (paymentSendText) paymentSendText.textContent = trans.payment_send;
+            document.querySelector('.phone-number').textContent = trans.payment_phone;
+            let sendMoneyBtn = document.getElementById('sendMoneyBtn');
+            if (sendMoneyBtn) sendMoneyBtn.textContent = trans.payment_btn;
+            
+            let thankYouMsg = document.querySelector('.thank-you-message');
+            if (thankYouMsg) {
+                thankYouMsg.querySelector('h3').textContent = trans.thank_you_title;
+                let msgPs = thankYouMsg.querySelectorAll('p');
+                msgPs[0].textContent = trans.thank_you_msg1;
+                msgPs[1].textContent = trans.thank_you_msg2;
+            }
+            
+            let closeBtn = document.querySelector('#thankYouSection button');
+            if (closeBtn) closeBtn.textContent = trans.thank_you_close;
+            
+            // Update footer
+            let footerPs = document.querySelector('.footer-text').querySelectorAll('p');
+            footerPs[0].textContent = trans.footer_copyright;
+            footerPs[1].innerHTML = 'Designed & Developed by <strong>Abir</strong>';
+            footerPs[2].textContent = trans.footer_signature;
+            
+            let devContactP = document.querySelector('.dev-contact > p');
+            devContactP.textContent = trans.footer_connect;
+            
+            // Set document language attribute
+            document.documentElement.lang = currentLanguage;
+        }
+
+        // Update language button styles
+        function updateLanguageButtons() {
+            document.getElementById('langEnglish').classList.remove('active');
+            document.getElementById('langBangla').classList.remove('active');
+            if (currentLanguage === 'en') {
+                document.getElementById('langEnglish').classList.add('active');
+            } else {
+                document.getElementById('langBangla').classList.add('active');
+            }
+        }
+
         function openDonateModal() {
             document.getElementById("donateModal").style.display = "block";
             document.getElementById("paymentOptions").style.display = "grid";
@@ -609,6 +1179,11 @@
                 modal.style.display = "none";
             }
         }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLanguage();
+        });
     </script>
 </body>
 </html>
