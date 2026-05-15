@@ -238,6 +238,13 @@
             color: #7f8c8d; 
             font-weight: 400; 
         }
+        #team1-phone, #team2-phone, #team3-phone {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        #team1-phone:hover, #team2-phone:hover, #team3-phone:hover {
+            color: #3498db;
+        }
         .donate-section { 
             display: block; 
             width: min(100%, 960px); 
@@ -331,6 +338,53 @@
             section { padding: 2rem 1rem; } 
             .content-grid, .team { grid-template-columns: 1fr; } 
         }
+        #contact {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            padding: 4rem 2rem;
+            border-radius: 16px;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .contact-item {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e1e8ed;
+        }
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .contact-item .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .contact-item p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .contact-item a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
         .modal { 
             display: none; 
             position: fixed; 
@@ -410,6 +464,11 @@
             color: #27ae60; 
             margin: 1.5rem 0; 
             letter-spacing: 2px; 
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .phone-number:hover {
+            color: #2ecc71;
         }
         .send-money-btn { 
             background: linear-gradient(135deg, #3498db, #2980b9); 
@@ -579,8 +638,8 @@
     </style>
 <body>
     <div class="language-selector">
-        <button class="lang-btn active" id="langEnglish" onclick="setLanguage('en')"><span style="font-size: 0.5rem; opacity: 0.5;">EN</span> English</button>
         <button class="lang-btn" id="langBangla" onclick="setLanguage('bn')"><span style="font-size: 0.5rem; opacity: 0.5;">BN</span> বাংলা</button>
+        <button class="lang-btn active" id="langEnglish" onclick="setLanguage('en')"><span style="font-size: 0.5rem; opacity: 0.5;">EN</span> English</button>
     </div>
     <header>
         <img src="logo.png" alt="Tarun Shakti Foundation Logo">
@@ -651,18 +710,22 @@
                 <h3>Md. Kawsar Ahmed</h3>
                 <p>President</p>
                 <p>Engineer</p>
+                <p id="team1-phone" onclick="navigator.clipboard.writeText(this.textContent.split(': ')[1])">Phone: +8801340-451953</p>
+                
             </div>
             <div class="team-member">
                 <img src="soho-sovapoty.png" alt="Vice-President">
                 <h3>Md. Ibrahim Khalil</h3>
                 <p>Vice-President</p>
                 <p>Engineer & Student</p>
+                <p id="team2-phone" onclick="navigator.clipboard.writeText(this.textContent.split(': ')[1])">Phone: +8801733-618727</p>
             </div>
             <div class="team-member">
                 <img src="sompadok.png" alt="Md. Mehedi Hasan Abir">
                 <h3>Md. Mahadi Hasan Abir</h3>
                 <p>General Secretary</p>
                 <p>Student</p>
+                <p id="team3-phone" onclick="navigator.clipboard.writeText(this.textContent.split(': ')[1])">Phone: +8801609-221481</p>
             </div>
         </div>
     </section>
@@ -704,8 +767,28 @@
     </section>
     <section id="contact">
         <h2>Contact Us</h2>
-        <p>Email: tarunshaktifoundation@gmail.com</p>
-        <p>Phone: +8801609221481</p>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <span class="icon">📧</span>
+                <p>Email: <a href="mailto:tarunshaktifoundation@gmail.com" style="border-bottom: 1px solid #3498db; text-decoration: none; color: #3498db;">tarunshaktifoundation@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <span class="icon">📞</span>
+                <p onclick="navigator.clipboard.writeText('+8801309-584925')" style="cursor: pointer;">Phone: <a href="tel:+8801309-584925" style="border-bottom: 1px solid #3498db; text-decoration: none; color: #3498db;">+8801309-584925</a></p>
+            </div>
+            <div class="contact-item">
+                <span class="icon">📞</span>
+                <p onclick="navigator.clipboard.writeText('+8801306-942290')" style="cursor: pointer;">Phone: <a href="tel:+8801306-942290" style="border-bottom: 1px solid #3498db; text-decoration: none; color: #3498db;">+8801306-942290</a></p>
+            </div>
+            <div class="contact-item">
+                <span class="icon">📞</span>
+                <p onclick="navigator.clipboard.writeText('+8801733-618727')" style="cursor: pointer;">Phone: <a href="tel:+8801733-618727" style="border-bottom: 1px solid #3498db; text-decoration: none; color: #3498db;">+8801733-618727</a></p>
+            </div>
+            <div class="contact-item">
+                <span class="icon">📘</span>
+                <p><a href="https://www.facebook.com/share/18nYDS9mdP/" target="_blank" rel="noopener noreferrer">Follow us on Facebook</a></p>
+            </div>
+        </div>
     </section>
     <section class="donate-section">
         <h2>Support Our Mission</h2>
@@ -767,7 +850,7 @@
             </div>
             <div id="paymentDetails" style="display: none;">
                 <p style="font-size: 1.1rem; color: #2c3e50; font-weight: 600;" id="paymentSendText">Send money to this number:</p>
-                <div class="phone-number">01609221481</div>
+                <div class="phone-number" onclick="navigator.clipboard.writeText('01609221481')">01609221481</div>
                 <button class="send-money-btn" id="sendMoneyBtn" onclick="showThankYou()">Send Money</button>
             </div>
             <div id="thankYouSection" style="display: none;">
@@ -820,15 +903,23 @@
                 plan3_text: "Build international partnerships to address global challenges while staying true to our Islamic principles and values.",
                 
                 team_title: "Our Leadership Team",
-                team1_name: "Md. Kawsar Ahmed",
+                team1_name: "Eng. Md. Kawsar Ahmed",
                 team1_position: "President",
+                team1_phone: "+8801340-451953",
                 team1_role: "Engineer",
-                team2_name: "Md. Ibrahim Khalil",
+                team1_phone_label: "Phone:",
+
+                team2_name: "Eng. Md. Ibrahim Khalil",
                 team2_position: "Vice-President",
                 team2_role: "Engineer & Student",
+                team2_phone: "+8801733-618727",
+                team2_phone_label: "Phone: ",
+
                 team3_name: "Md. Mahadi Hasan Abir",
                 team3_position: "General Secretary",
                 team3_role: "Student",
+                team3_phone: "+8801609-221481",
+                team3_phone_label: "Phone: ",
                 
                 committee_title: "Committee Members",
                 committee_subtitle: "Our dedicated committee working to strengthen the foundation",
@@ -917,20 +1008,28 @@
                 plan3_text: "আন্তর্জাতিক অংশীদারিত্ব তৈরি করা বৈশ্বিক চ্যালেঞ্জ মোকাবেলা করতে আমাদের ইসলামিক নীতি এবং মূল্যবোধের প্রতি সত্য থেকে।",
                 
                 team_title: "আমাদের নেতৃত্ব দল",
-                team1_name: "মোহাম্মদ কাওসার আহমেদ",
+                team1_name: "ইঞ্জি. মোঃ কাওসার আহমেদ",
                 team1_position: "সভাপতি",
                 team1_role: "প্রকৌশলী",
-                team2_name: "মোহাম্মদ ইব্রাহিম খলিল",
+                team1_phone: "+8801340-451953",
+                team1_phone_label: "ফোন:",
+
+                team2_name: "ইঞ্জি. মোঃ ইব্রাহিম খলিল",
                 team2_position: "উপ-সভাপতি",
                 team2_role: "প্রকৌশলী এবং শিক্ষার্থী",
-                team3_name: "মোহাম্মদ মাহাদি হাসান আবীর",
+                team2_phone: "+8801733-618727",
+                team2_phone_label: "ফোন: ",
+
+                team3_name: "মোঃ মেহেদী হাসান আবীর",
                 team3_position: "সাধারণ সম্পাদক",
                 team3_role: "শিক্ষার্থী",
+                team3_phone: "+8801609-221481",
+                team3_phone_label: "ফোন: ",
                 
                 committee_title: "কমিটি সদস্য",
                 committee_subtitle: "আমাদের ফাউন্ডেশনকে শক্তিশালী করতে নিবেদিত কমিটি",
                 
-                committee1_name: "মোহাম্মদ শফিকুল ইসলাম",
+                committee1_name: "মোঃ শফিকুল ইসলাম",
                 committee1_position: "উপদেষ্টা এবং সামাজিক সেবা সম্পাদক",
                 committee1_role: "প্রতিষ্ঠিত ব্যবসায়ী",
                 
@@ -940,13 +1039,13 @@
                 
                 committee3_name: "মোহাম্মদ আবদুল্লাহ",
                 committee3_position: "ধর্মীয় বিষয়ক সম্পাদক",
-                committee3_role: "মৌলানা",
+                committee3_role: "মাওলানা",
                 
                 committee4_name: "মোহাম্মদ নাহিদ",
                 committee4_position: "প্রকাশনা এবং প্রচার সম্পাদক",
                 committee4_role: "শিক্ষার্থী",
                 
-                committee5_name: "ডেলোয়ার হোসেন",
+                committee5_name: "দেলোয়ার হোসেন",
                 committee5_position: "কার্যক্রম এবং ক্রীড়া সম্পাদক",
                 committee5_role: "বিভাগীয় ক্রীড়া কর্মী",
                 
@@ -976,9 +1075,9 @@
                 thank_you_close: "বন্ধ করুন",
                 
                 footer_copyright: "© ২০২৬ তারুণ শক্তি ফাউন্ডেশন। সর্বস্বত্ব সংরক্ষিত।",
-                footer_designed: "ডিজাইন ও উন্নয়ন করেছেন আবীর",
-                footer_signature: "আবীরের একটি প্রিমিয়াম ওয়েব অভিজ্ঞতা — যত্ন এবং উৎকর্ষতার সাথে প্রতিটি পিক্সেল তৈরি করা।",
-                footer_connect: "আবীরের সাথে সংযোগ করুন"
+                footer_designed: "ডিজাইন ও উন্নয়ন করেছেন আবির",
+                footer_signature: "আবির একটি প্রিমিয়াম ওয়েব অভিজ্ঞতা — যত্ন এবং উৎকর্ষতার সাথে প্রতিটি পিক্সেল তৈরি করা।",
+                footer_connect: "আবির সাথে সংযোগ করুন"
             }
         };
 
@@ -1051,6 +1150,10 @@
             teamMembers[2].querySelectorAll('p')[0].textContent = trans.team3_position;
             teamMembers[2].querySelectorAll('p')[1].textContent = trans.team3_role;
             
+            document.getElementById('team1-phone').textContent = trans.team1_phone_label + trans.team1_phone;
+            document.getElementById('team2-phone').textContent = trans.team2_phone_label + trans.team2_phone;
+            document.getElementById('team3-phone').textContent = trans.team3_phone_label + trans.team3_phone;
+            
             // Update committee members
             let committeeTitle = document.querySelector('.committee-section h2');
             if (committeeTitle) committeeTitle.textContent = trans.committee_title;
@@ -1087,9 +1190,6 @@
             }
             
             document.querySelectorAll('h2')[6].textContent = trans.contact_title;
-            let contactPs = document.querySelectorAll('#contact > p');
-            contactPs[0].textContent = trans.contact_email;
-            contactPs[1].textContent = trans.contact_phone;
             
             let donateH2 = document.querySelector('.donate-section h2');
             if (donateH2) donateH2.textContent = trans.donate_title;
